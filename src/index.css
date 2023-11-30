@@ -13,15 +13,25 @@ code {
 }
 
 :root {
-    --background: white;
-    --text-primary: black;
-    --text-secondary: royalblue;
-    --accent: purple;
+    --primary-text-size: 18px;
+    --secondary-text-size: 14px;
+    --misc-text-size: 12px;
 }
 
+/* Color themes */
+
+/* light theme */
+:root {
+    --background: rgb(230 230 230);
+    --card-bg: rgb(218 218 218);
+    --text-primary: black;
+    --text-secondary: royalblue;
+}
+
+/* dark theme */
 [data-theme='dark'] {
     --background: black;
+    --card-bg: rgb(51 51 51);
     --text-primary: white;
-    --text-secondary: grey;
-    --accent: darkred;
+    --text-secondary: lightgray;
 }
