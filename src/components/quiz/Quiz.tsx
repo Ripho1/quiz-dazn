@@ -10,14 +10,14 @@ interface QuizProps extends React.HTMLAttributes<HTMLDivElement> {
     question?: Question,
     hightlightCorrect?: boolean,
     showHint?: boolean,
-    onOptionClick?: (id: number) => void
+    onOptionClick?: (id: number) => void,
+    secondsLeft?: number
 }
 
 /**
  * Quiz component presenting the data from props
- * TODO change stub to props
  */
-export const Quiz = ({ className, question, hightlightCorrect = false, showHint = false, onOptionClick, ...props }: QuizProps) => {
+export const Quiz = ({ className, question, secondsLeft = 0, hightlightCorrect = false, showHint = false, onOptionClick, ...props }: QuizProps) => {
     return (
         true ?
             <div className={`quiz-container ${className}`} {...props}>
@@ -25,7 +25,7 @@ export const Quiz = ({ className, question, hightlightCorrect = false, showHint 
                 <div className={`hint ${showHint || "hidden"}`}>{quizQuestion.hint}</div>
                 <div className="timer">
                     <Circle className="circle-background">
-                        14
+                        {secondsLeft}
                     </Circle>
                 </div>
 
