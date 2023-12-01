@@ -1,0 +1,19 @@
+.option {
+    font-size: var(--secondary-text-size);
+    padding: 10px;
+    border: 1px dotted var(--border);
+    border-radius: 15px;
+}
+
+.option:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--border);
+}
+
+.highlight {
+    box-shadow: 0 0 20px var(--border);
+}
+
+.not-clickable {
+    pointer-events: none;
+}

@@ -1,4 +1,6 @@
-export default [
+import { Question } from "./Types"
+
+export const Questions: Question[] = [
     {
         question_id: 1,
         question: " What famous Roman general and statesman was assassinated on the Ides of March in 44    BC?",

@@ -26,6 +26,7 @@ code {
     --card-bg: rgb(218 218 218);
     --text-primary: black;
     --text-secondary: royalblue;
+    --border: #589eff;
 }
 
 /* dark theme */
@@ -34,4 +35,5 @@ code {
     --card-bg: rgb(51 51 51);
     --text-primary: white;
     --text-secondary: lightgray;
+    --border: silver;
 }

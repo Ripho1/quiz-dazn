@@ -3,18 +3,19 @@
     flex-direction: column;
     align-items: center;
     background-color: var(--card-bg);
+    border-radius: 15px;
 
     /* TODO change to something better */
     width: 65%;
     height: 25%;
-    
+
     position: absolute;
     top: 25%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.quiz-container > div {
+.quiz-container>div {
     display: flex;
     align-items: center;
 }
@@ -24,14 +25,18 @@
     flex: 2;
 }
 
-/* TODO needs to add hidden ability */
-
 .quiz-container .hint {
     flex: 1;
     color: var(--text-secondary);
     font-size: var(--misc-text-size);
+    font-weight: bold;
 }
 
+.hint.hidden {
+    visibility: hidden;
+}
+
+/* Timer */
 .quiz-container .timer {
     flex: 1;
     font-size: var(--secondary-text-size);
@@ -41,17 +46,12 @@
     background-color: var(--background);
 }
 
-/* TODO will move */
-
-.quiz-container .options {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    text-align: center;
+/* Options */
+.quiz-container .options-container {
+    flex: 5;
     width: 90%;
 }
 
-.options .option {
+.quiz-option {
     width: 40%;
-    font-size: var(--secondary-text-size);
 }
