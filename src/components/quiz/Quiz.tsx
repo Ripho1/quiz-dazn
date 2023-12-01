@@ -1,4 +1,3 @@
-import { Questions } from "../../Questions"
 import { Question } from "../../Types"
 import { Circle } from "../circle/Circle"
 import { Option } from "../options/Option"
@@ -10,7 +9,7 @@ interface QuizProps extends React.HTMLAttributes<HTMLDivElement> {
     question?: Question,
     hightlightCorrect?: boolean,
     showHint?: boolean,
-    onOptionClick?: (id: number) => void,
+    onOptionClick?: (questionID: number, id: number) => void,
     secondsLeft?: number
 }
 
@@ -19,10 +18,10 @@ interface QuizProps extends React.HTMLAttributes<HTMLDivElement> {
  */
 export const Quiz = ({ className, question, secondsLeft = 0, hightlightCorrect = false, showHint = false, onOptionClick, ...props }: QuizProps) => {
     return (
-        true ?
+        question ?
             <div className={`quiz-container ${className}`} {...props}>
-                <div className="question">{quizQuestion.question}</div>
-                <div className={`hint ${showHint || "hidden"}`}>{quizQuestion.hint}</div>
+                <div className="question">{question.question}</div>
+                <div className={`hint ${showHint || "hidden"}`}>{question.hint}</div>
                 <div className="timer">
                     <Circle className="circle-background">
                         {secondsLeft}
@@ -31,12 +30,12 @@ export const Quiz = ({ className, question, secondsLeft = 0, hightlightCorrect =
 
                 <Options className="options-container">
                     {
-                        quizQuestion.choices.map((choice, index) =>
+                        question.choices.map((choice, index) =>
                             <Option
                                 key={index}
                                 className="quiz-option"
-                                onClick={() => !hightlightCorrect && onOptionClick?.(index)}
-                                highlight={hightlightCorrect && index == quizQuestion.answer_index}
+                                onClick={() => !hightlightCorrect && onOptionClick?.(question.question_id, index)}
+                                highlight={hightlightCorrect && index == question.answer_index}
                                 preventPointer={hightlightCorrect}
                             >
                                 {choice}
@@ -48,9 +47,3 @@ export const Quiz = ({ className, question, secondsLeft = 0, hightlightCorrect =
             : <></>
     )
 }
-
-const quiz2AnswersIndex = 0 // Let flex handle
-const quiz3AnswersIndex = 1 // add unclickable empty option
-const quiz4AnswersIndex = 2 // let flex handle
-
-const quizQuestion = Questions[quiz4AnswersIndex]

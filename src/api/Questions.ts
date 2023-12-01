@@ -1,4 +1,4 @@
-import { Question } from "./Types"
+import { Question } from "../Types"
 
 export const Questions: Question[] = [
     {
