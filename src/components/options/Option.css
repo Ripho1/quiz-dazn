@@ -1,6 +1,6 @@
 .option {
     font-size: var(--text-secondary-size);
-    padding: 5px;
+    padding: 7px;
     border: 1px solid var(--border);
     border-radius: 15px;
     cursor: pointer;

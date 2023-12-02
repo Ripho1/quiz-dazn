@@ -11,9 +11,9 @@ code {
 }
 
 :root {
-    --text-primary-size: 18px;
-    --text-secondary-size: 14px;
-    --text-misc-size: 12px;
+    --text-primary-size: 20px;
+    --text-secondary-size: 16px;
+    --text-misc-size: 14px;
 }
 
 /* Color themes */
