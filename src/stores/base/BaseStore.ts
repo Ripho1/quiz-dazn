@@ -5,6 +5,7 @@ import { IStore } from "./IStore"
  * Base implementation for stores
  */
 export abstract class BaseStore<DataType> implements IStore<DataType> {
+    // In hindsight I should have implemented the stores to be id-based to support multiple quizzes at the same time 
     private listeners: Subscribed<DataType | undefined>[] = []
     protected data?: DataType
 
