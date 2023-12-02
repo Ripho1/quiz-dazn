@@ -1,12 +1,15 @@
 import { quizOptionSelected, ranOutOfTime } from "../../api/Api"
-import { useQuiz, useTimer } from "../../hooks/useQuiz"
+import { useQuiz } from "../../hooks/useQuiz"
+import { useTimer } from "../../hooks/useTimer"
 import { MAX_TIME_FOR_QUESTION } from "../../stores/data/DataStores"
 import { Quiz } from "./Quiz"
+
+interface QuizDataProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 /**
  * Wraps the quiz component and adds in the data via props
  */
-export const QuizWithData = () => {
+export const QuizWithData = (props: QuizDataProps) => {
     const quiz = useQuiz()
     const timer = useTimer()
 
@@ -21,5 +24,6 @@ export const QuizWithData = () => {
         hightlightCorrect={timer == 0}
         showHint={Number(timer) <= MAX_TIME_FOR_QUESTION / 2}
         onOptionClick={quizOptionSelected}
+        {...props}
     />
 }

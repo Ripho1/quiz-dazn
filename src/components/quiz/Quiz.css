@@ -4,15 +4,8 @@
     align-items: center;
     background-color: var(--card-bg);
     border-radius: 15px;
-
-    /* TODO change to something better */
-    width: 65%;
-    height: 25%;
-
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 50%;
+    height: 30%;
 }
 
 .quiz-container>div {
@@ -21,14 +14,15 @@
 }
 
 .quiz-container .question {
-    font-size: var(--primary-text-size);
+    font-size: var(--text-primary-size);
     flex: 2;
+    width: 95%;
 }
 
 .quiz-container .hint {
     flex: 1;
     color: var(--text-secondary);
-    font-size: var(--misc-text-size);
+    font-size: var(--text-misc-size);
     font-weight: bold;
 }
 
@@ -39,7 +33,7 @@
 /* Timer */
 .quiz-container .timer {
     flex: 1;
-    font-size: var(--secondary-text-size);
+    font-size: var(--text-secondary-size);
 }
 
 .timer .circle-background {

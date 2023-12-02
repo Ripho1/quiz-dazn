@@ -11,9 +11,8 @@ interface CircleProps extends React.HTMLAttributes<HTMLDivElement> {
  * Basic Circle component with 3 sizes
  */
 export const Circle = ({ children, className, size = "medium", ...props }: CircleProps) => {
-    return (
-        <div className={`circle ${size} ${className}`} {...props}>
-            {children}
-        </div>
-    )
+    return <div className={`circle ${size} ${className}`} {...props}>
+        {children}
+    </div>
+
 }

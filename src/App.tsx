@@ -1,16 +1,18 @@
-import { beginQuiz } from './api/Api'
 import { QuizWithData } from './components/quiz/QuizWithData'
+import { BeginButton } from './components/button/BeginButton'
+import { Result } from './components/result/Result'
 
 import './App.css'
 
 function App() {
-    return (
-        <div className="App" data-theme={"dark"}>
-            <QuizWithData />
-        </div>
-    )
+    return <div className="app" data-theme={"dark"}>
+
+        <BeginButton className="begin-button-position" />
+
+        <QuizWithData className="quiz-position" />
+
+        <Result className="results-position" />
+
+    </div>
 }
-
-beginQuiz()
-
 export default App

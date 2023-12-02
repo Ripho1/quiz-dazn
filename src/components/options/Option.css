@@ -1,17 +1,20 @@
 .option {
-    font-size: var(--secondary-text-size);
-    padding: 10px;
-    border: 1px dotted var(--border);
+    font-size: var(--text-secondary-size);
+    padding: 5px;
+    border: 1px solid var(--border);
     border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
 .option:hover {
-    cursor: pointer;
-    box-shadow: 0 0 10px var(--border);
+    box-shadow: 0 0 10px var(--shadow);
+    transition: all 0.2s;
 }
 
 .highlight {
-    box-shadow: 0 0 20px var(--border);
+    box-shadow: 0 0 20px var(--shadow);
+    transition: all 0.2s;
 }
 
 .not-clickable {

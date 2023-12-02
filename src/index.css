@@ -1,8 +1,6 @@
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -13,9 +11,9 @@ code {
 }
 
 :root {
-    --primary-text-size: 18px;
-    --secondary-text-size: 14px;
-    --misc-text-size: 12px;
+    --text-primary-size: 18px;
+    --text-secondary-size: 14px;
+    --text-misc-size: 12px;
 }
 
 /* Color themes */
@@ -27,6 +25,7 @@ code {
     --text-primary: black;
     --text-secondary: royalblue;
     --border: #589eff;
+    --shadow: #2f3070c4;
 }
 
 /* dark theme */
@@ -36,4 +35,5 @@ code {
     --text-primary: white;
     --text-secondary: lightgray;
     --border: silver;
+    --shadow: #706f4aa8;
 }

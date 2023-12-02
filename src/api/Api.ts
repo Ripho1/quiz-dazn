@@ -1,4 +1,5 @@
-import { CurrentQuestionIndex, QuizStore, QuizzesStore, CorrectAnswersStore, TimerStore } from "../stores/data/DataStores"
+import { Question } from "../Types"
+import { CurrentQuestionIndex, QuizStore, QuizzesStore, CorrectAnswersCounterStore, TimerStore, ShowResultsStore } from "../stores/data/DataStores"
 import { Questions } from "./Questions"
 
 /**
@@ -10,7 +11,7 @@ export async function getQuestions() {
 }
 
 /**
- * Gets the random questions and put the relevant info in the stores
+ * Gets the random questions and resets info in the stores
  */
 export async function beginQuiz() {
     try {
@@ -19,7 +20,9 @@ export async function beginQuiz() {
         QuizzesStore.Set(questions)
         QuizStore.Set(questions[0])
         CurrentQuestionIndex.Set(0)
-        TimerStore.advanceTimer()
+        TimerStore.RestartTimer()
+        ShowResultsStore.Set(false)
+        CorrectAnswersCounterStore.Set(0)
     } catch (error) {
         alert("Try again later :(")
         console.log(error)
@@ -31,7 +34,7 @@ export function quizOptionSelected(questionID: number, optionIndex: number) {
 
     if (currentQuestion) {
         if (currentQuestion.answer_index == optionIndex) {
-            CorrectAnswersStore.IncreaseBy()
+            CorrectAnswersCounterStore.IncreaseBy()
         }
 
         _advanceQuestion()
@@ -42,7 +45,7 @@ export function quizOptionSelected(questionID: number, optionIndex: number) {
  * Timer ran out so leaving the correct answer highlighted for a second and moving on
  */
 export function ranOutOfTime() {
-    TimerStore.stopTimer()
+    TimerStore.StopTimer()
 
     setTimeout(() => {
         _advanceQuestion()
@@ -53,17 +56,21 @@ export function ranOutOfTime() {
  * Going for the next question involves - 
  * question index increase,
  * setting the next question,
- * resetting the timer
+ * restarting the timer
  */
 function _advanceQuestion() {
     CurrentQuestionIndex.IncreaseBy()
     const newQuestionIndex = CurrentQuestionIndex.GetCurrent()
 
     if (newQuestionIndex) {
-        QuizStore.Set(QuizzesStore.GetCurrent()?.[newQuestionIndex])
+        const nextQuiz = QuizzesStore.GetCurrent()?.[newQuestionIndex]
+        QuizStore.Set(nextQuiz)
+
+        // If there is not a current question we show the results
+        ShowResultsStore.Set(!nextQuiz)
     }
 
-    TimerStore.restartTimer()
+    TimerStore.RestartTimer()
 }
 
 /**
@@ -71,10 +78,15 @@ function _advanceQuestion() {
  */
 function _fromClient() {
     const questionsToGet = 5
-    const chosens = []
+    const chosens: Question[] = []
 
-    for (let i = 0; i < questionsToGet; i++) {
-        chosens.push(Questions[i])
+    while(chosens.length < questionsToGet) {
+        const randomIndex = Math.floor(Math.random() * Questions.length)
+        const randomQ = Questions[randomIndex]
+
+        if (chosens.find(q => q.question_id == randomQ.question_id) == undefined) {
+            chosens.push(randomQ)
+        }
     }
 
     return chosens

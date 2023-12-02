@@ -1,7 +1,29 @@
-.App {
+.app {
     color: var(--text-primary);
     background-color: var(--background);
     padding: 20px;
     height: calc(100vh - 40px);
     transition: all .5s;
+}
+
+.begin-button-position {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 5%;
+}
+
+.quiz-position {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.results-position {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20%;
 }

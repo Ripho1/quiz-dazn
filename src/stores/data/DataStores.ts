@@ -1,7 +1,7 @@
 import { Question } from "../../Types"
 import { BaseStore } from "../base/BaseStore"
 
-export const MAX_TIME_FOR_QUESTION = 10
+export const MAX_TIME_FOR_QUESTION = 20
 
 class CurrentQuestion extends BaseStore<Question> { }
 
@@ -21,6 +21,8 @@ class Results extends BaseStore<number> {
     }
 }
 
+class ShowResults extends BaseStore<boolean> {}
+
 class Timer extends BaseStore<number> {
     protected setTimoutID: NodeJS.Timeout | undefined
 
@@ -30,7 +32,7 @@ class Timer extends BaseStore<number> {
         this.data = MAX_TIME_FOR_QUESTION
     }
     
-    advanceTimer() {
+    private AdvanceTimer() {
         this.setTimoutID = setTimeout(() => {
             if (this.data != undefined) {   
                 this.Set(this.data - 1)
@@ -38,23 +40,34 @@ class Timer extends BaseStore<number> {
                 this.Set(MAX_TIME_FOR_QUESTION)
             }
             
-            this.advanceTimer()
+            this.AdvanceTimer()
         }, 1000)
     }
     
-    stopTimer() {
+    StopTimer() {
         clearTimeout(this.setTimoutID)
+        this.setTimoutID = undefined
     }
 
-    restartTimer() {
-        this.stopTimer()
+    /**
+     * Resumes the timer if it was paused
+     */
+    ResumeTimer() {
+        if (!this.setTimoutID) {
+            this.AdvanceTimer()
+        }
+    }
+
+    RestartTimer() {
+        this.StopTimer()
         this.Set(MAX_TIME_FOR_QUESTION)
-        this.advanceTimer()
+        this.AdvanceTimer()
     }
 }
 
 export const QuizStore = new CurrentQuestion()
 export const QuizzesStore = new AllQuestions()
 export const CurrentQuestionIndex = new QuestionIndex()
-export const CorrectAnswersStore = new Results()
+export const CorrectAnswersCounterStore = new Results()
+export const ShowResultsStore = new ShowResults()
 export const TimerStore = new Timer()
