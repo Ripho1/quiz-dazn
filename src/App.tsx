@@ -5,7 +5,8 @@ import { Result } from './components/result/Result'
 import './App.css'
 
 function App() {
-    return <div className="app" data-theme={"dark"}>
+    // In the future the theme should be from a store and storage
+    return <div className="app" data-theme={"dark"}> 
 
         <BeginButton className="begin-button-position" />
 

@@ -24,7 +24,7 @@ class Results extends BaseStore<number> {
 class ShowResults extends BaseStore<boolean> {}
 
 class Timer extends BaseStore<number> {
-    protected setTimoutID: NodeJS.Timeout | undefined
+    private setTimoutID: NodeJS.Timeout | undefined
 
     constructor() {
         super()

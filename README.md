@@ -41,3 +41,9 @@ The options for that are:
 
 Each of the 3 is looking at one of the data stores to know whether to be shown or not, for example both the ```<BeginButton>``` and the ```<QuizWithData>``` are looking at the same store (via a hook) ```QuizStore```
 
+---
+<br/>
+<br/>
+<br/>
+
+UI Themes - While the default is dark mode, the application supports light mode. It has to be done through the code, in the file `App.tsx`
